@@ -21,6 +21,11 @@ $apiContext = new \PayPal\Rest\ApiContext(
             'EJ6ireJSPnzZko-oKuC-03Nu6PAi_5PtMUBXE0lYSkIHzDYhulMrVgS5N9wectYpj3qY6PDiVK-Yt7YN'      // ClientSecret
         )
 );
+$apiContext->setConfig(
+      array(
+        'mode' => 'sandbox',
+      )
+);
 //set payer
 $payer = new Payer();
 $payer->setPaymentMethod("paypal");
@@ -47,7 +52,7 @@ $transaction->setAmount($amount)
 
 
 
-$baseUrl = 'http://local.paypal';
+$baseUrl = 'http://paypal.digitalizeweb.eu';
 $redirectUrls = new RedirectUrls();
 $redirectUrls->setReturnUrl("$baseUrl/ExecutePayment.php?success=true")
     ->setCancelUrl("$baseUrl/ExecutePayment.php?success=false");
